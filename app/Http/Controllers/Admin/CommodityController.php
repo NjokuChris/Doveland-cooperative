@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\company;
 use App\Models\comm_period;
 use App\Models\branch_location;
+use App\Models\Commodity;
 use App\Models\Members;
 use App\Models\User;
 
@@ -33,7 +34,8 @@ class CommodityController extends Controller
      */
     public function create()
     {
-        //
+        $comm = Commodity::all();
+        return view('admin.commodity.edit', compact('comm'));
     }
 
     /**
@@ -66,7 +68,7 @@ class CommodityController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -97,6 +99,16 @@ class CommodityController extends Controller
 
         $arr['users'] = user::all();
         $arr['branch'] = branch_location::all();
+        $arr['company'] = company::where('status', 'Active')->get();
+        $arr['comm_period'] = comm_period::where('status', 'Active')->get();
+        return view('admin.commodity.search')->with($arr);
+    }
+
+    public function Commodity(Request $request)
+    {
+
+        $arr['users'] = user::all();
+        $arr['comm'] = Commodity::all();
         $arr['company'] = company::where('status', 'Active')->get();
         $arr['comm_period'] = comm_period::where('status', 'Active')->get();
         return view('admin.commodity.search')->with($arr);

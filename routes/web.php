@@ -42,6 +42,7 @@ Route::get('/getMonth', [App\Http\Controllers\Admin\Coop_processController::clas
 Route::get('/getPayrollMonth1', [App\Http\Controllers\Reports\ReportsController::class, 'getPayrollMonth1']);
 Route::get('/getProduct', [App\Http\Controllers\Admin\ProductsController::class, 'getProduct']);
 Route::get('/admin/commSearch', [App\Http\Controllers\Admin\CommodityController::class, 'CommSearch'])->name('CommSearch');
+Route::get('/admin/commperiodopen/{id}', [App\Http\Controllers\Admin\CommPeriodController::class, 'openedit'])->name('commperiodopen');
 Route::resource('/admin/branch', App\Http\Controllers\Admin\branch_locationsController::class);
 Route::resource('/admin/orders', App\Http\Controllers\Admin\OrdersController::class);
 Route::resource('/admin/withdrawers', App\Http\Controllers\Admin\withdrawersContoller::class);
@@ -63,6 +64,7 @@ Route::resource('/admin/member_terminate', App\Http\Controllers\Admin\members_te
 Route::resource('/admin/contributions', App\Http\Controllers\Admin\ContributionsController::class);
 Route::resource('/admin/comm', App\Http\Controllers\Admin\CommodityController::class);
 Route::resource('/admin/commperiod', App\Http\Controllers\Admin\CommPeriodController::class);
+Route::get('/admin/open/{id}', [App\Http\Controllers\Admin\CommPeriodController::class, 'open'])->name('open');
 
 Route::resource('/admin/approval_stages', App\Http\Controllers\Admin\ApprovalStageController::class);
 Route::resource('/admin/process_module', App\Http\Controllers\Admin\ProcessModuleController::class);

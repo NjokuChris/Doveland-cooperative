@@ -34,6 +34,16 @@ class CommodityController extends Controller
      */
     public function create()
     {
+        $period_id = collect(DB::select('SELECT dbo.GetOpenCommPeriod() AS nb'))->first()->nb;
+
+       // dd($period_id);
+
+        if ($period_id == null) {
+
+            return redirect('/user')->with('message2', 'Commodity Period has not been Open for commodity request!');
+
+        }
+
 
         $product = product::paginate(12);
        // $count=cart::where('user_id',Auth::user()->id)->count();

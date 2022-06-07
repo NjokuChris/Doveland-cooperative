@@ -55,7 +55,7 @@
                             <div class="form-group col-sm-4">
                                 <label>Date of Birth:</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" name="date_birth" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                                    <input type="text" name="date_from" class="form-control datetimepicker-input" data-target="#reservationdate" />
                                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
@@ -64,7 +64,7 @@
                             <div class="form-group col-sm-4">
                                 <label>Date Joined:</label>
                                 <div class="input-group date" id="reservationdate1" data-target-input="nearest">
-                                    <input type="text" name="joined_date" class="form-control datetimepicker-input" required data-target="#reservationdate1" />
+                                    <input type="text" name="date_to" class="form-control datetimepicker-input" required data-target="#reservationdate1" />
                                     <div class="input-group-append" data-target="#reservationdate1" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
@@ -72,8 +72,6 @@
                             </div>
 
                         </div>
-
-
                         <div class="form-group" style="padding-top: 20px">
                             <input type="submit" class="btn btn-info" value="Submit">
                         </div>

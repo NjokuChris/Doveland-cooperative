@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\comm_period;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CommPeriodController extends Controller
 {
@@ -92,5 +93,26 @@ class CommPeriodController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function openedit($id)
+    {
+        return view('admin.comm_period.open');
+    }
+
+    public function open(Request $request, $id)
+    {
+        $comm_period = comm_period::find($id);
+
+        $comm_period->status = 'Active';
+
+        $comm_period->save();
+
+        $affected = DB::table('comm_periods')
+              ->whereNotIn('id', [$id])
+              ->update(['Status' => 'Decline']);
+
+        return redirect('/admin/commperiod')->with('message', 'Commodity Period has been open successfully');
+
     }
 }
